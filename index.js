@@ -1,16 +1,11 @@
+const{select} = require('@inquirer/prompts')
 
-let meta = {
-    value: 'ler um livro',
-    checked: false
-}
-console.log(meta.value)
-
-let metas = [
-    meta,
-    {
-        value: 'ir para a academia',
-        checked: true
+function start(){
+    let count = 0
+    while(count < 10){
+        console.log(count)
+        count++
     }
-]
+}
 
-console.log(metas[1].value)
+start()
