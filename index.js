@@ -56,11 +56,28 @@ const metasRealizadas = async() => {
     }
 
     await select({
-        message: "Metas realizadas",
+        message: "Metas realizadas " + realizadas.length,
         choices: [...realizadas]
     })
-    //console.log(realizadas)
+    
 }
+
+const metasAbertas = async() => {
+    const abertas = metas.filter((meta)=>{
+        return !meta.checked //meta.checked != true
+    })
+
+    if(abertas.length == 0){
+        console.log('Nenhuma meta aberta! :) ')
+        return
+    }
+
+    await select({
+        message: "Metas abertas " + abertas.length,
+        choices: [...abertas]
+    })
+}
+
 const start = async() => {
     
     while(true){
@@ -77,6 +94,9 @@ const start = async() => {
                 },{
                     name: "Metas Realizadas",
                     value: "realizadas"
+                },{
+                    name: "Metas Abertas",
+                    value: "abertas"
                 },
                 {
                 name: "Sair",
@@ -95,6 +115,9 @@ const start = async() => {
                 break
             case "realizadas":
                 await metasRealizadas()
+                break
+            case "abertas":
+                await metasAbertas()
                 break
             case "sair":
                 console.log("Até a próxima!")
